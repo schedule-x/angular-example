@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {CalendarComponent} from "@schedule-x/angular";
 import {createCalendar, viewWeek} from "@schedule-x/calendar";
-import '@schedule-x/theme-default/dist/calendar.css'
 import {createEventModalPlugin} from "@schedule-x/event-modal";
 import {createDragAndDropPlugin} from "@schedule-x/drag-and-drop";
+import 'temporal-polyfill/global';
 
 @Component({
   selector: 'app-root',
@@ -20,10 +20,12 @@ export class AppComponent {
       {
         id: '1',
         title: 'Event 1',
-        start: '2024-06-11 03:00',
-        end: '2024-06-11 05:00',
+        start: Temporal.ZonedDateTime.from('2024-06-11T03:00:00+00:00[UTC]'),
+        end: Temporal.ZonedDateTime.from('2024-06-11T05:00:00+00:00[UTC]'),
       },
     ],
+    selectedDate: Temporal.PlainDate.from('2024-06-11'),
+    timezone: 'UTC',
     views: [viewWeek],
     plugins: [createEventModalPlugin(), createDragAndDropPlugin()]
   })
