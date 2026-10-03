@@ -1,31 +1,21 @@
-<style>
-  main {
-    width: 100%;
-    min-height: 100%;
-    padding: 1rem;
-    box-sizing: inherit;
-    position: relative;
-  }
-
-  .content {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 700px;
-    margin-bottom: 3rem;
-  }
-</style>
-
-<main class="main">
-  <div class="content">
-    <sx-calendar [calendarApp]="calendarApp">
-      <ng-template #timeGridEvent let-arg>
-        <div style="background-color: #d6c5ea; border: 2px solid #856dc0; height: 100%; width: 100%; border-radius: 5px;padding: 5px">
-          <div>Time grid event: {{ arg.calendarEvent.title }}</div>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">SX</span><span>Schedule-X examples</span></div>
+    <div class="user-summary"><span class="status-pill"><span class="status-dot"></span> Local demo</span><div class="account"><span class="avatar">EX</span><span class="account-copy"><strong>Example user</strong><span>Frontend sample</span></span></div></div>
+  </header>
+  <div class="shell-body">
+    <aside class="workspace-sidebar"><p class="sidebar-label">Workspace</p><div class="nav-item"><span class="nav-icon">▦</span> Calendar</div><div class="sidebar-footer"><span class="sync-icon">↻</span><span class="sidebar-footer-copy"><strong>Sample data</strong><span>Runs locally in your browser</span></span></div></aside>
+    <main class="workspace">
+      <div class="page-heading"><p class="eyebrow">Your workspace</p><h1>Calendar</h1><p class="subtitle">Explore Schedule-X with a focused, production-inspired frontend shell.</p></div>
+      <section class="calendar-panel">
+        <div class="panel-meta"><strong>Angular basics</strong><span>Interactive example</span></div>
+        <div class="calendar-stage">
+          <sx-calendar [calendarApp]="calendarApp">
+            <ng-template #timeGridEvent let-arg><div style="background-color: #d6c5ea; border: 2px solid #856dc0; height: 100%; width: 100%; border-radius: 5px; padding: 5px">Time grid event: {{ arg.calendarEvent.title }}</div></ng-template>
+          </sx-calendar>
         </div>
-      </ng-template>
-    </sx-calendar>
+      </section>
+    </main>
   </div>
-</main>
-
+</div>
 <router-outlet />
